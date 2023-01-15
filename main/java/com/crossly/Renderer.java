@@ -80,7 +80,7 @@ public class Renderer {
     public void drawRectangle(int posX, int posY, int width, int height, int color) {
         // Horizontal lines
         drawLine(posX, posY, posX + width, posY, color);
-        drawLine(posX, posY + height, posX + width, posY + height, color);
+        drawLine(posX, posY + height, posX + width + 1, posY + height, color);
         // Vertical lines
         drawLine(posX, posY, posX, posY + height, color);
         drawLine(posX + width, posY, posX + width, posY + height, color);
