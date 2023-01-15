@@ -69,17 +69,6 @@ public class GameContainer extends TimeManager implements Runnable {
         }
     }
 
-    public int getTicksPerSec() {
-        return ticksPerSec;
-    }
-
-    public void setTicksPerSec(int ticksPerSec) {
-        if (ticksPerSec >24) {
-            this.ticksPerSec = ticksPerSec;
-            tickRate = 1.0 / ticksPerSec;
-        }
-    }
-
     public String getTitle() {
         return title;
     }
