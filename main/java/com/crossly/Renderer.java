@@ -90,6 +90,14 @@ public class Renderer {
         drawRectangle(pos.getX(), pos.getY(), width, height, color);
     }
 
+    public void fillRectangle(int posX, int posY, int width, int height, int color) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                setPixel(x + posX, y + posY, color);
+            }
+        }
+    }
+
     public void drawShape(Coordinate[] pos, int color) {
         for (int i = 1; i <= pos.length; i++) {
             drawLine(pos[i - 1], pos[i % pos.length], color);
