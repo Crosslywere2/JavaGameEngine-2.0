@@ -20,7 +20,7 @@ public class TimeManager {
         pastTime = now;
     }
 
-    public static double getTimeDelta() {
+    protected static double getTimeDelta() {
         return timeDelta;
     }
 }

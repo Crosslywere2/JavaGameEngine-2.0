@@ -27,6 +27,7 @@ public class GameContainer extends TimeManager implements Runnable {
         this.height = Math.max(128, height);
         this.scale = Math.max(1, scale);
     }
+
     public void initialize() {
         window = new Window(this);
         renderer = new Renderer(this);
@@ -51,7 +52,7 @@ public class GameContainer extends TimeManager implements Runnable {
             unprocessed += TimeManager.getTimeDelta();
             while (unprocessed >= tickRate) {
                 unprocessed -= tickRate;
-                gameManager.onUpdate();
+                gameManager.onUpdate(unprocessed);
                 input.update();
                 render = true;
             }
