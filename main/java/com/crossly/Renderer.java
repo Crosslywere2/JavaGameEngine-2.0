@@ -12,7 +12,7 @@ public class Renderer {
     public Renderer(GameContainer gc) {
         width = gc.getWidth();
         height = gc.getHeight();
-        pixels = ((DataBufferInt)gc.getWindow().getImage().getRaster().getDataBuffer()).getData();
+        pixels = ((DataBufferInt) gc.getWindow().getImage().getRaster().getDataBuffer()).getData();
     }
 
     public void clear() {
@@ -66,8 +66,8 @@ public class Renderer {
             int height = endY - startY;
             double distance = Math.sqrt(width * width + height * height);
             for (int t = 0; t < distance; t++) {
-                int x = startX + (int)((t / distance) * width);
-                int y = startY + (int)((t / distance) * height);
+                int x = startX + (int) ((t / distance) * width);
+                int y = startY + (int) ((t / distance) * height);
                 setPixel(x, y, color);
             }
         }
@@ -95,4 +95,25 @@ public class Renderer {
             drawLine(pos[i - 1], pos[i % pos.length], color);
         }
     }
+
+    public void drawArc(int posX, int posY, int radius, int startAngle, int endAngle, int color) {
+        for (int i = startAngle; i <= endAngle; i++) {
+            int x = (int) (radius * Math.cos(Math.toRadians(i)));
+            int y = (int) (radius * Math.sin(Math.toRadians(i)));
+            setPixel(x + posX, y + posY, color);
+        }
+    }
+
+    public void drawArc(Coordinate pos, int radius, int startAngle, int endAngle, int color) {
+        drawArc(pos.getX(), pos.getY(), radius, startAngle, endAngle, color);
+    }
+
+    public void drawCircle(int posX, int posY, int radius, int color) {
+        drawArc(posX, posY, radius, 0, 360, color);
+    }
+
+    public void drawCircle(Coordinate pos, int radius, int color) {
+        drawCircle(pos.getX(), pos.getY(), radius, color);
+    }
+
 }
