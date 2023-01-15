@@ -13,7 +13,7 @@ public class TimeManager {
         pastTime = currentTime();
     }
 
-    public static void tick() {
+    protected static void tick() {
         double past = pastTime;
         double now = currentTime();
         timeDelta = now - past;
