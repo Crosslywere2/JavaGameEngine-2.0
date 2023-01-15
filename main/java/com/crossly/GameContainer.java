@@ -2,7 +2,7 @@ package com.crossly;
 
 import com.crossly.utils.TimeManager;
 
-public class GameContainer implements Runnable {
+public class GameContainer extends TimeManager implements Runnable {
     private String title = "Crosslywere's Java Game";
     private int width = 320;
     private int height = 240;
@@ -17,12 +17,6 @@ public class GameContainer implements Runnable {
     private Renderer renderer;
     private Input input;
     private GameManager gameManager;
-
-    private class TimeKeeper extends TimeManager {
-        public static void init() {
-            TimeManager.init();
-        }
-    }
 
     public GameContainer() {
     }
@@ -50,7 +44,7 @@ public class GameContainer implements Runnable {
     public void run() {
         running = true;
         double unprocessed = 0.0;
-        TimeKeeper.init();
+        TimeManager.init();
         while (running) {
             boolean render = false;
             TimeManager.tick();
