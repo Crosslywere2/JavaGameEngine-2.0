@@ -19,4 +19,10 @@ public abstract class GameManager {
     public abstract void onUpdate(double deltaTime);
 
     public abstract void onRender();
+
+    public void dispose() {}
+
+    public final void quit() {
+        gc.stop();
+    }
 }

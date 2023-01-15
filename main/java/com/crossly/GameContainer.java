@@ -68,6 +68,7 @@ public class GameContainer extends TimeManager implements Runnable {
                 }
             }
         }
+        gameManager.dispose();
     }
 
     public String getTitle() {
@@ -96,5 +97,9 @@ public class GameContainer extends TimeManager implements Runnable {
 
     public Input getInput() {
         return input;
+    }
+
+    public void stop() {
+        running = false;
     }
 }
