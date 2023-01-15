@@ -22,7 +22,7 @@ public class Image {
             img = ImageIO.read(Image.class.getResourceAsStream(path));
             width = img.getWidth();
             height = img.getHeight();
-            pixels = img.getRGB(0,0, width, height, null, 0, width);
+            pixels = img.getRGB(0, 0, width, height, null, 0, width);
             img.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
