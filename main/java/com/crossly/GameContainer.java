@@ -52,7 +52,7 @@ public class GameContainer extends TimeManager implements Runnable {
             unprocessed += TimeManager.getTimeDelta();
             while (unprocessed >= tickRate) {
                 unprocessed -= tickRate;
-                gameManager.onUpdate(unprocessed);
+                gameManager.onUpdate(tickRate);
                 input.update();
                 render = true;
             }
