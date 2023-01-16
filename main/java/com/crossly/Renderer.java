@@ -8,11 +8,16 @@ import java.awt.image.DataBufferInt;
 public class Renderer {
     private int width, height;
     private int[] pixels;
+    private int ignoreColor = 0;
 
     public Renderer(GameContainer gc) {
         width = gc.getWidth();
         height = gc.getHeight();
         pixels = ((DataBufferInt) gc.getWindow().getImage().getRaster().getDataBuffer()).getData();
+    }
+
+    public void setIgnoreColor(int ignoreColor) {
+        this.ignoreColor = ignoreColor;
     }
 
     public void clear() {
@@ -22,7 +27,7 @@ public class Renderer {
     }
 
     public void setPixel(int x, int y, int color) {
-        if (x < 0 || y < 0 || x >= width || y >= height) return;
+        if (x < 0 || y < 0 || x >= width || y >= height || color == ignoreColor) return;
         pixels[x + y * width] = color;
     }
 
