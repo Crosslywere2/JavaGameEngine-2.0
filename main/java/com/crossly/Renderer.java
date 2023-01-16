@@ -4,6 +4,7 @@ import com.crossly.gfx.Image;
 import com.crossly.utils.Coordinate;
 
 import java.awt.image.DataBufferInt;
+import java.util.Arrays;
 
 public class Renderer {
     private int width, height;
@@ -21,9 +22,7 @@ public class Renderer {
     }
 
     public void clear() {
-        for (int i = 0; i < pixels.length; i++) {
-            pixels[i] = 0;
-        }
+        Arrays.fill(pixels, 0);
     }
 
     public void setPixel(int x, int y, int color) {
