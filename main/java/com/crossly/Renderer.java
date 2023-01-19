@@ -10,6 +10,7 @@ public class Renderer {
     private int width, height;
     private int[] pixels;
     private int ignoreColor = 0;
+    private int clearColor = 0;
 
     public Renderer(GameContainer gc) {
         width = gc.getWidth();
@@ -20,9 +21,12 @@ public class Renderer {
     public void setIgnoreColor(int ignoreColor) {
         this.ignoreColor = ignoreColor;
     }
+    public void setClearColor(int clearColor) {
+        this.clearColor = clearColor;
+    }
 
     public void clear() {
-        Arrays.fill(pixels, 0);
+        Arrays.fill(pixels, clearColor);
     }
 
     public void setPixel(int x, int y, int color) {
@@ -40,6 +44,10 @@ public class Renderer {
                 setPixel(posX + x, posY + y, image.getPixels()[x + y * image.getWidth()]);
             }
         }
+    }
+
+    public void drawImage(Image image, Coordinate pos) {
+        drawImage(image, pos.getX(), pos.getY());
     }
 
     public void drawLine(int startX, int startY, int endX, int endY, int color) {
@@ -100,6 +108,10 @@ public class Renderer {
                 setPixel(x + posX, y + posY, color);
             }
         }
+    }
+
+    public void fillRectangle(Coordinate pos, int width, int height, int color) {
+        fillRectangle(pos.getX(), pos.getY(), width, height, color);
     }
 
     public void drawShape(Coordinate[] pos, int color) {
