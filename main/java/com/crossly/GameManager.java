@@ -16,6 +16,8 @@ public abstract class GameManager {
         gc.start(this);
     }
 
+    public abstract  void onCreate();
+
     public abstract void onUpdate(double deltaTime);
 
     public abstract void onRender();

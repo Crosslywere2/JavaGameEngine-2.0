@@ -2,6 +2,7 @@ package com.crossly;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -10,6 +11,7 @@ public class Window {
     private Canvas canvas;
     private BufferStrategy strategy;
     private Graphics graphics;
+    private JFrame frame;
 
     public Window(GameContainer gc) {
         image = new BufferedImage(gc.getWidth(), gc.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -19,7 +21,6 @@ public class Window {
         canvas.setMaximumSize(d);
         canvas.setMinimumSize(d);
 
-        JFrame frame;
         frame = new JFrame(gc.getTitle());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -45,5 +46,9 @@ public class Window {
 
     public Canvas getCanvas() {
         return canvas;
+    }
+
+    public void exit() {
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 }

@@ -45,6 +45,7 @@ public class GameContainer extends TimeManager implements Runnable {
     public void run() {
         running = true;
         double unprocessed = 0.0;
+        gameManager.onCreate();
         TimeManager.init();
         while (running) {
             boolean render = false;
@@ -69,6 +70,7 @@ public class GameContainer extends TimeManager implements Runnable {
             }
         }
         gameManager.dispose();
+        window.exit();
     }
 
     public String getTitle() {
