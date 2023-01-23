@@ -5,9 +5,8 @@ public abstract class GameManager {
     protected final Renderer renderer;
     protected final Input input;
 
-    public GameManager(GameContainer gc) {
-        gc.initialize();
-        this.gc = gc;
+    public GameManager(String title, int width, int height, float scale) {
+        (gc = new GameContainer(title, width, height, scale)).initialize();
         renderer = gc.getRenderer();
         input = gc.getInput();
     }
@@ -16,7 +15,7 @@ public abstract class GameManager {
         gc.start(this);
     }
 
-    public abstract  void onCreate();
+    public abstract void onCreate();
 
     public abstract void onUpdate(double deltaTime);
 

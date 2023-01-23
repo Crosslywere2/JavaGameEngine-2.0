@@ -6,7 +6,7 @@ public class GameContainer extends TimeManager implements Runnable {
     private String title = "Crosslywere's Java Game";
     private int width = 320;
     private int height = 240;
-    private int scale = 4;
+    private float scale = 4;
     private int ticksPerSec = 60;
     private double tickRate = 1.0 / ticksPerSec;
     private boolean initialized = false;
@@ -21,7 +21,7 @@ public class GameContainer extends TimeManager implements Runnable {
     public GameContainer() {
     }
 
-    public GameContainer(String title, int width, int height, int scale) {
+    public GameContainer(String title, int width, int height, float scale) {
         this.title = title;
         this.width = Math.max(128, width);
         this.height = Math.max(128, height);
@@ -85,7 +85,7 @@ public class GameContainer extends TimeManager implements Runnable {
         return height;
     }
 
-    public int getScale() {
+    public float getScale() {
         return scale;
     }
 

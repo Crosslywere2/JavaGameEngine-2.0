@@ -13,10 +13,11 @@ public class Input implements KeyListener, MouseWheelListener, MouseInputListene
     private final boolean[] keysLast = new boolean[MAX_KEYS];
     private final boolean[] buttons = new boolean[MAX_BUTTONS];
     private final boolean[] buttonsLast = new boolean[MAX_BUTTONS];
+    private char keyCode = '\0';
 
     private final Coordinate mousePos = new Coordinate();
     private int scroll = 0;
-    private final int scale;
+    private final float scale;
 
     public Input(GameContainer gc) {
         gc.getWindow().getCanvas().addKeyListener(this);
@@ -36,6 +37,7 @@ public class Input implements KeyListener, MouseWheelListener, MouseInputListene
             buttonsLast[i] = buttons[i];
         }
         scroll = 0;
+        keyCode = '\0';
     }
 
     public int getScroll() {
@@ -78,8 +80,14 @@ public class Input implements KeyListener, MouseWheelListener, MouseInputListene
         return !keys[key] && keysLast[key];
     }
 
+    public char getKeyCode() {
+        return keyCode;
+    }
+
     @Override
     public void keyTyped(KeyEvent keyEvent) {
+        keyCode = keyEvent.getKeyChar();
+        keys[keyEvent.getKeyCode()] = true;
     }
 
     @Override
@@ -121,13 +129,13 @@ public class Input implements KeyListener, MouseWheelListener, MouseInputListene
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        mousePos.setX(mouseEvent.getX() / scale);
-        mousePos.setY(mouseEvent.getY() / scale);
+        mousePos.setX((int)(mouseEvent.getX() / scale));
+        mousePos.setY((int)(mouseEvent.getY() / scale));
     }
 
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
-        mousePos.setX(mouseEvent.getX() / scale);
-        mousePos.setY(mouseEvent.getY() / scale);
+        mousePos.setX((int)(mouseEvent.getX() / scale));
+        mousePos.setY((int)(mouseEvent.getY() / scale));
     }
 }
